@@ -1,0 +1,186 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    height: 100%;
+  }
+
+.landing{
+    background-image: url(/images/img.jpg);
+    background-color:white;
+    height: 720px;
+  
+}
+.container-landing{
+   padding: 20px 30px 10px 30px;
+}
+
+/* Navigation bar */
+.navbar{
+    padding:0 0 2.5rem 0;
+}
+.nav-item{
+    padding: 0 18px; 
+}
+.nav-link{
+    color:rgba(44, 44, 44, 0.651);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+.nav-link:hover{
+    color: rgb(27, 27, 27);
+}
+.brand{
+    font-family: "Ubuntu";
+    color: rgba(0, 0, 0, 0.856);
+    font-size: 3rem;
+}
+.brand:hover{
+    color: rgb(0, 0, 0) !important;
+    text-shadow: #bdbdbd 0 4px 5px;
+}
+.g-logo{
+    font-size: 4rem;
+    padding: 0;
+}
+.i-logo{
+    color: red;
+    padding: 0;
+}
+p.slogan{
+    font-size: 2rem;
+    font-weight:700;
+    font-family: 'Montserrat Alternates', sans-serif; 
+}
+
+.left-column{
+    float:left; 
+    width:30%;
+    height:480px;
+    padding-top: 100px;
+    text-align: center;
+}
+.right-column{
+    float:right;
+    width:70%;
+    height:480px;
+}
+img{
+    position: relative;
+    width:auto;
+    height:100%;
+    
+}
+
+
+
+a.button3{
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    border:1px solid;
+    font-weight:700;
+    background-color: white;
+    text-align:center;
+    transition: all 0.2s;
+}
+a.login{
+    border-color: #01e701;
+    color: #01e701;
+}
+a.signup{
+    border-color:#3bbcf8;
+    color:#3bbcf8;
+}
+a.login:hover{
+    background-color:#01e701;
+    color:#FFFFFF;
+}
+a.signup:hover{
+    background-color:#3bbcf8;
+    color:#FFFFFF;
+}
+@media all and (max-width:30em){
+    a.button3{
+        display:block;
+        margin:0.2em auto;
+    }
+}
+
+button {
+    position: relative;
+    padding-top: 10px;
+    left: 100px;
+    padding: 19px 36px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    border-radius: 40px;
+    border: none;
+   }
+   
+   button span {
+    position: relative;
+    color: #fff;
+    font-family: Arial;
+    letter-spacing: 8px;
+    z-index: 3;
+   }
+   
+   button .liquid {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: #3bbcf8;
+    box-shadow: inset 0 0 50px #01e701;
+    transition: .5s;
+   }
+   
+   button .liquid::after,
+   button .liquid::before {
+    content: '';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -75%);
+    background: #fff;
+   }
+   
+   button .liquid::before {
+    border-radius: 45%;
+    background: rgba(20, 20, 20, 1);
+    animation: animate 5s linear infinite;
+   }
+   
+   button .liquid::after {
+    border-radius: 40%;
+    background: rgba(20, 20, 20, .5);
+    animation: animate 10s linear infinite;
+   }
+   
+   button:hover .liquid {
+    top: -120px;
+   }
+   
+   @keyframes animate {
+    0% {
+     transform: translate(-50%, -75%) rotate(0deg);
+    }
+   
+    100% {
+     transform: translate(-50%, -75%) rotate(360deg);
+    }
+   }
+
+
+footer{
+    padding-top: 20px;
+    text-align: center;
+}
