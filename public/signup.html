@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Groove Hits</title>
-    <script type="module" src="bundle.js"></script>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css"> 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet"> 
-    
     
 
 </head>
@@ -37,26 +36,25 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#contact-us">Contact Us</a>
                       </li>
-                      <li class="nav-item nav-link">
-                        <a href="login.html" class="button3 login">Log In</a>
-                      </li>
-                      <li class="nav-item nav-link">
-                        <a href="signup.html" class="button3 signup">Get Started</a>
-                  </div>
+                      </div>
                 </nav>
             </div>
 
 
         <div id="login-box">
             <div class="left">
+              
+             <form class="form" id="signup">
               <h1>Sign up</h1>
+                <input type="text" name="username" placeholder="Username" />
+                <input type="text" name="email" placeholder="E-mail" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="password" name="password2" placeholder="Retype password" />
+
+                <input type="submit" name="signup_submit" value="Sign me up"/>
+             </form> 
+
               
-              <input type="text" name="username" placeholder="Username" />
-              <input type="text" name="email" placeholder="E-mail" />
-              <input type="password" name="password" placeholder="Password" />
-              <input type="password" name="password2" placeholder="Retype password" />
-              
-              <input type="submit" name="signup_submit" value="Sign me up" />
             </div>
             
             <div class="right">
@@ -72,13 +70,22 @@
           </div>
 
     
+<div class="sign_up">
+  <p class="opt" id="optSignin"> 
+    Already have an account?  
+    <a href="login.html" >Log In</a>
+   </p>
 
-
-</body>
-
-     <!-- Footer -->
-<div class="footer">
-    <p>© Copyright 2022 <br> Groove Hits</p>
 </div>
 
+    <!-- Footer -->
+    <div class="footer">
+      <p>© Copyright 2022 <br> Groove Hits</p>
+    </div>
+
+     
+    <script type="module" src="signup.js"></script>
+    
+
+</body>     
 </html>

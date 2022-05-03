@@ -22,8 +22,6 @@
                  <a class="navbar-brand brand" href="index.html"><span class="g-logo">G</span>roove 
                     H<span class="i-logo">i</span>ts</a>
 
-                 
-
                  <div class="navbar-collapse" id="collapsedMenu">
                     <ul class="navbar-nav ml-auto">
                       <li class="nav-item">
@@ -37,56 +35,53 @@
                       <li class="nav-item">
                         <a class="nav-link" href="#contact-us">Contact Us</a>
                       </li>
-                      <li class="nav-item nav-link">
-                        <a href="login.html" class="button3 login">Log In</a>
-                      </li>
-                      <li class="nav-item nav-link">
-                        <a href="signup.html" class="button3 signup">Get Started</a>
+                      
                   </div>
                 </nav>
             </div>
 
-            <p> 
-                Don't have an account yet? 
-                <a href="signup.html" class="button">Sign Up</a>
-               </p> 
+            
 <div class="content">
 
     <div id="login-box">
         <div class="left">
-          <h1>Sign up</h1>
+          <h1>Log in</h1>
+          <form id="login">
+            <input type="text" name="email" placeholder="Email"/>
+            <input type="password" name="password" placeholder="Password"/>
+            <input type="submit" name="login_submit" value="LOG IN"/>
+          </form>
           
-          <input type="text" name="username" placeholder="Username or Email" />
-          <input type="password" name="password" placeholder="Password" />
-         
-          
-          <input type="submit" name="login_submit" value="LOG IN" />
         </div>
         
+        
+         
         <div class="right">
             <p class="loginwith">Log in with<br/>social network</p>
             <div class="items">
-                <button class="social-signin facebook">Log in with facebook</button>
-                <button class="social-signin twitter">Log in with Twitter</button>
-                <button class="social-signin google">Log in with Google+</button>
-            </div>
-          
+                <button class="social-signin facebook" id="fb">Log in with facebook</button>
+                <button class="social-signin twitter" id="twitter">Log in with Twitter</button>
+                <button class="social-signin google" id="google">Log in with Gmail</button>
+            </div> 
         </div>
-        <div class="or">OR</div>
+        <div class="or">OR</div>       
       </div>
-
-      
-      <p> 
-        Don't have an account yet? 
-        <a href="signup.html" class="button">Sign Up</a>
-       </p> 
 </div>
-    
-</body>
 
-    <!-- Footer -->
+
+<div class="sign_up">
+  <p> 
+    Don't have an account yet?  
+    <a href="signup.html" >Sign Up</a>
+   </p>
+</div>
+
+
 <div class="footer">
-   <p>© Copyright 2022 <br> Groove Hits</p>
+  <p>© Copyright 2022 <br> Groove Hits</p>
 </div>
 
+<script type="module" src="login.js"></script>
+
+</body>
 </html>

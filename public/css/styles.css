@@ -16,12 +16,12 @@ body{
     max-height: 100%;
 }
 .container-landing{
-   padding: 20px 30px 10px 30px;
+   padding: 20px 30px 0px 30px;
 }
 
 /* Navigation bar */
 .navbar{
-    padding:0 0 2.5rem 0;
+    padding:0 0 15px 0;
 }
 .nav-item{
     padding: 0 18px; 
@@ -65,6 +65,7 @@ p.slogan{
 
 .left-column{
     float:left; 
+    margin-left: 50px;
     width:30%;
     height:480px;
     padding-top: 100px;
@@ -74,18 +75,16 @@ p.slogan{
 }
 .right-column{
     float:right;
-    width:70%;
+    width:60%;
     height:480px;
     background-color: white;
 }
 img{
     position: relative;
     width:auto;
-    height:100%;
-    
+    height:90%; 
+    right: 0px; 
 }
-
-
 
 a.button3{
     display:inline-block;
@@ -195,18 +194,19 @@ button {
 
 
 .footer{
-    padding-top: 100px;
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    bottom:0;
+  position: relative;
+  margin-top: 60px;
+  width: 100%;
+  text-align: center;
+  bottom:0;
 }
 
 #login-box {
     position: relative;
-    margin: 5% auto;
+    margin: 0 auto;
+    margin-bottom: 30px; 
     width: 720px;
-    height: 480px;
+    height: 400px;
     background: #FFF;
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -225,7 +225,9 @@ button {
     font-weight: 300;
     font-size: 28px;
   }
-  
+  #login-box .left p{
+    margin-top: 30px;
+  }
   input[type="text"],
   input[type="password"] {
     display: block;
@@ -289,6 +291,7 @@ button {
   }
   
   .right {
+    top: 20px;
     position: absolute;
     right: 0;
     box-sizing: border-box;
@@ -309,9 +312,7 @@ button {
     font-size: 28px;
     text-align: center;
 }
-
-
-  button.social-signin {
+button.social-signin {
     left:0;
     margin-bottom: 20px;
     width: 260px;
@@ -342,3 +343,17 @@ button {
   button.social-signin.google {
     background: #DD4B39;
   }
+
+  .content{
+    text-align: center;
+  }
+  
+.sign_up p{
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.hidden{
+	display: none!important;
+}
