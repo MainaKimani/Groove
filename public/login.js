@@ -148,7 +148,5 @@ googleLogin.addEventListener('click', (e)=>{
     const credential = GoogleAuthProvider.credentialFromError(error);
     // 
   })
-
-
 })
 
