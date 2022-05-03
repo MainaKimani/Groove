@@ -4,6 +4,7 @@ import { getAuth,
     signInWithPopup,
     signInWithEmailAndPassword,
     FacebookAuthProvider,
+    TwitterAuthProvider,
     GoogleAuthProvider
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
@@ -26,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const googleAuth = new GoogleAuthProvider();
 const fbAuth = new FacebookAuthProvider();
-
+const twitterAuth = new TwitterAuthProvider();
 
 //Login user
 const loginForm = document.getElementById("login")
@@ -99,7 +100,27 @@ twitterLogin.addEventListener('click', (e)=>{
   e.preventDefault()
   console.log('twitter clicked')
 
+  signInWithPopup(auth, twitterAuth)
+  .then((result) => {
+    // This gives you a the Twitter OAuth 1.0 Access Token and Secret.
+    // You can use these server side with your app's credentials to access the Twitter API.
+    const credential = TwitterAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const secret = credential.secret;
 
+    // The signed-in user info.
+    const user = result.user;
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = TwitterAuthProvider.credentialFromError(error);
+    // ...
+  });
 })
 
 //login with google
@@ -116,7 +137,8 @@ googleLogin.addEventListener('click', (e)=>{
     // The signed-in user info.
     const user = result.user;
     // ...
-  }).catch((error) => {
+  })
+  .catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
