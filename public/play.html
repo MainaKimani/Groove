@@ -14,8 +14,22 @@
             <h1>Playlist</h1>
             <div class="playlist">
                 <h4 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Playlist</h4>
-                <h4><span></span><i class="bi bi-music-note-beamed"></i>Last Listening</h4>
+                <h4><span></span><i class="bi bi-music-note-beamed"></i>My Music</h4>
                 <h4><span></span><i class="bi bi-music-note-beamed"></i>Recommended</h4>
+
+                <br>
+                <label> Upload Your Music </label>
+                <input type="text" id="namebox" class="hidden" placeholder="Music Name" accept="audio/*">
+                <label id="extLabel" > </label>
+                <audio id="mySong" src=""></audio>
+                <br>
+                <button id="select" class=""> Select Song </button>
+                <button id="upload" class="hidden"> Upload Song </button>
+                <button id="cancelUpload" class="hidden"> Cancel </button>
+                <br><br>
+                <progress id="uploadProgress" value="0" max="100" class="hidden"></progress>
+                <br>
+                <label id="progress"></label>
             </div>
             <div class="border">
                 <hr>
@@ -39,25 +53,7 @@
                         <i class="bi playlistPlay bi-play-circle" id="2"></i>
                     </h5>
                 </li>
-                <li class="songItem">
-                    <span>03</span>
-                    <img src="images/img.jpg" alt="cover art">
-                    <h5>
-                        Smooth Criminal
-                        <div class="artist"> Micheal Jackson </div>
-                        <i class="bi playlistPlay bi-play-circle" id="3"></i>
-                    </h5>
-                </li>
-                <li class="songItem">
-                    <span>04</span>
-                    <img src="images/img.jpg" alt="cover art"/>
-                    <h5>
-                        Smooth Criminal
-                        <div class="artist"> Micheal Jackson </div>
-                        <i class="bi playlistPlay bi-play-circle" id="4"></i>
-                    </h5>
-                </li>
-                <li class="songItem">
+                
                      
             </div>
         </div>
@@ -110,9 +106,9 @@
 
         </div>
     </header>
-
-    <script type="module" src="bundle.js"></script>
     <script type="module" src="logout.js"></script>
+    <script type="module" src="app.js"></script>
+    
 
 </body>
 </html>
