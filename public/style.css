@@ -355,3 +355,6 @@ header .song_side nav #logout{
 header .song_side nav #logout:hover{
     color: #fff;
 }
+.hidden{
+	display: none!important;
+}
