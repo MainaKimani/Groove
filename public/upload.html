@@ -38,21 +38,27 @@
 
 <div class="uploadForm">
 
-    <form class="form" id="upload">
+    
         <h1>Upload Your Music</h1>
 
                 <label id="songUpload">Select the music from your device <i>(You can edit the file name after file selection)</i> *</label><br>
                 <div class="selection">
-                <button id="select" class=""> Select Song </button> 
-                <div class="label"><input type="text" id="namebox" class="" placeholder="Music Name ..." accept="audio/*"></div>
-                </div>  
+                <button id="selectSong" class=""> Select Song </button> 
+                <div class="label" id="divInput">
+                    <input type="text" id="namebox" class="" placeholder="Music Name ..." accept="audio/*">
+                </div>
+                <label id="extLabel" > </label>
                 <audio id="mySong" src=""></audio>
+                </div>  
+                
                 
                 <label id="imageUpload">Select the cover art</label>
                 <div class="selection">
-                <button id="select" class=""> Select Image </button> 
+                <button id="selectImage" class=""> Select Image </button> 
                 <div class="label"><input type="text" id="imgNamebox" class="" placeholder="Image Name ..."></div>
+                <label id="imgLabel" > </label>
                 </div>
+                
                 
                 <label id="artistLabel">Enter the main artist *</label><br>
                 <div class="selection">
@@ -62,7 +68,7 @@
                 
                 <label id="artistFtLabel">Enter featured artists <i>(seperate their names using commas)</i></label><br>
                 <div class="selection">
-                <div class="label"><input type="text" id="artistTitle" class="" placeholder="Artist 1, Artist 2, ..."><br><br> </div>
+                <div class="label"><input type="text" id="ftArtists" class="" placeholder="Artist 1, Artist 2, ..."><br><br> </div>
                 </div>
 
                 <div class="options">
@@ -76,9 +82,12 @@
                     <option value="Gengetone">Gengetone</option>
                     <option value="Gospel">Gospel</option>
                     <option value="Hip-Hop">Hip-Hop</option>
+                    <option value="House">House</option>
                     <option value="Pop">Pop</option>
+                    <option value="Reggea">Reggea</option>
                     <option value="RnB">RnB</option>
                     <option value="Soul">Soul</option>
+                    <option value="Other">Other</option>
                   </select>
                 </div>
 
@@ -94,7 +103,7 @@
                 <button id="cancelUpload" class="cancel"> Cancel </button>
                 </div>
 
-        </form> 
+          
 
     </div>
 
