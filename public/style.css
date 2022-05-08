@@ -298,7 +298,7 @@ header .song_side .content .buttons{
 header .song_side .content .buttons button{
    width: 80px;
    height: 40px;
-   font-size: 14px;
+   font-size: 16px;
    border: 2px solid #36e2ec;
    outline: none;
    border-radius: 20px;
@@ -306,6 +306,7 @@ header .song_side .content .buttons button{
    color: #36e2ec;
    cursor: pointer;
    transition: .3s linear;
+   align-items: center;
 }
 header .song_side .content .buttons button:hover{
    border: 2px solid #36e2ec;
@@ -473,6 +474,7 @@ header .song_side .songList ul{
     padding: 0;
 }
 header .song_side .songList ul li{
+    padding-left: 50px !important;
     position: relative;
     display: flex;
     align-items: center;
@@ -523,12 +525,19 @@ header .song_side .songList  li .bi:hover{
 }
 header .song_side .songList  li #deleteButton{
     right: 50px !important; 
-    font-size: 20px; 
+    font-size: 14px; 
 }
 header .song_side .songList  li #deleteButton:hover{
     color: red;
 }
-
+header .song_side .songList  li #editButton{
+    left: 0px !important; 
+    width: 20px;
+    font-size: 20px; 
+}
+header .song_side .songList  li #editButton:hover{
+    color: green; 
+}
 
 
 /* ================================Master Play (bottom dock)=================================*/
@@ -541,12 +550,12 @@ header .song_side .songList  li #deleteButton:hover{
     align-items: center;
     padding: 0 20px;
     z-index: 3;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
 }
 
 .master_play .wave{
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
    /* border: 1px solid #fff; */
     padding-bottom: 5px;
     display: flex;
@@ -563,43 +572,54 @@ header .song_side .songList  li #deleteButton:hover{
 }
 .master_play .wave .wave1:nth-child(2){
     height: 13px;
-   /* animation-delay: .4s; */
+   
 }
 .master_play .wave .wave1:nth-child(3){
     height: 8px;
-   /* animation-delay: .8s; */
+    
 }
 /* Javascript class wave */
 .master_play .active2 .wave1{
-    animation: wave .5s linear infinite;  
+    animation: wave .4s linear infinite;  
 }
 .master_play .active2 .wave1:nth-child(2){
-    animation-delay: .4s;
+    animation-delay: .6s;
 }
 .master_play .active2 .wave1:nth-child(3){
-    animation-delay: .8s;
+    animation-delay: .10s;
 }
 
 @keyframes wave{
     0%{ height:10px; }
-    50%{ height:15px; }
+    40%{ height:15px; }
     100%{ height:10px; }
 }
 
-.master_play img{
+.master_play .image{
     width: 35px;
     height: 35px;
+    opacity: 0.6;
+}
+.master_play img{
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 .master_play h5{
     width: 130px;
-    font-size: 14px;
     font-weight: 400;
     margin-left: 15px;
     color: #fff;
     line-height: 17px;
 }
+.master_play h5 span{
+    font-size: 15px;
+    font-weight: 300;
+}
 .master_play h5 .artist{
     color: #4c5262;
+    font-size: 13px;
+    font-weight: 600;
 }
 .master_play .icon{
     font-size: 24px;
@@ -610,13 +630,15 @@ header .song_side .songList  li #deleteButton:hover{
     cursor: pointer;
     outline: none;
 }
+.master_play .icon .bi:hover{
+    color: #5ad9e077;
+}
 .master_play .icon .bi:nth-child(2){
-    border: 1px solid rgb(105, 105, 170,.1);
-    border-radius: 50%;
-    padding: 1px 3px 0px 6px;
     margin: 0px 5px 0px 0px;
     transition: .3s linear;
+    color: #36e2ec;
 }
+
 .master_play span{
     color: #fff;
     width: 32px;
@@ -639,6 +661,7 @@ header .song_side .songList  li #deleteButton:hover{
     width: 0%;
     height: 100%;
     top: 0;
+    transition: 1s linear;
 }
 .master_play .bar .dot{
     position: absolute;
@@ -675,7 +698,7 @@ header .song_side .songList  li #deleteButton:hover{
     position: relative;
     width: 100px;
     height: 2px;
-    margin-left: 50px;
+    margin-left: 150px;
     background: rgb(105 , 105, 170,.1)
 }
 .master_play .vol .bi{
@@ -701,6 +724,7 @@ header .song_side .songList  li #deleteButton:hover{
     width: 0%;
     height: 100%;
     top: 0;
+    transition: 1s linear;
 }
 .master_play .vol .dot{
     position: absolute;

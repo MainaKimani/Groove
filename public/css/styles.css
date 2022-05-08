@@ -10,7 +10,9 @@ body{
     padding: 0;
     color: #222;
   }
-
+a{
+  text-decoration: none !important;
+}
 .landing{
     background-color:white;
     max-height: 100%;

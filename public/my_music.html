@@ -77,7 +77,7 @@
                     <h1 id="songTitle"> </h1>
                     <p id="artistTitle"> </p>
                     <div class="buttons">
-                        <button>PLAY</button>
+                        <button id="playBanner">PLAY</button>
                     </div>
                 </div>
                 <div class="coverArt">
@@ -107,6 +107,7 @@
                     -->
 
                 </ul>
+
             </div>
         </div>
     </header>
@@ -117,16 +118,23 @@
                 <div class="wave1"> </div>
                 <div class="wave1"> </div>
             </div>
-            <img src="images/img.jpg" alt="cover art"/>
+            <div class="image">
+                <img src="" id ="masterPlayArt" />
+            </div>
+            
             <h5>
-                Smooth Criminal
-                <div class="artist"> Micheal Jackson </div>
+                <span id="masterPlayTitle"> </span>
+                <div class="artist" id="masterPlayArtist"> </div>
             </h5>
             <div class="icon">
-                <i class="bi bi-skip-start"></i>
-                <i class="bi bi-play"></i>
-                <i class="bi bi-skip-end"></i>
+                <i class="bi bi-skip-start" id="back"></i>
+                <i class="bi bi-play-circle" id="masterPlay"></i>
+                <i class="bi bi-skip-end" id="next"></i>
             </div>
+            <audio id="currentMusic" src=""> 
+                
+            </audio>
+
             <span id="currentStart">0:00</span>
             <div class="bar">
                 <input type="range" id="seek" min="0" value="0" max="100"> 
@@ -136,7 +144,7 @@
             <span id="currentEnd">0:00</span>
 
             <div class="vol">
-                <i class="bi bi-volume-down"></i>
+                <i class="bi bi-volume-down" id="vol_icon"></i>
                 <input type="range" id="volume" min="0" value="30" max="100">
                 <div class="vol_bar"></div>
                 <div class="dot" id="vol_dot"></div>

@@ -220,16 +220,23 @@
                 <div class="wave1"> </div>
                 <div class="wave1"> </div>
             </div>
-            <img src="images/img.jpg" alt="cover art"/>
-            <h5>
-                Smooth Criminal
-                <div class="artist"> Micheal Jackson </div>
-            </h5>
-            <div class="icon">
-                <i class="bi bi-skip-start"></i>
-                <i class="bi bi-play"></i>
-                <i class="bi bi-skip-end"></i>
+            <div class="image">
+                <img src="images/img.jpg" id ="masterPlayArt" />
             </div>
+            
+            <h5>
+                <span id="masterPlayTitle"> Smooth Criminal </span>
+                <div class="artist" id="masterPlayArtist"> Micheal Jackson </div>
+            </h5>
+            
+            <div class="icon">
+                <i class="bi bi-skip-start" id="back"></i>
+                <i class="bi bi-play-circle" id="masterPlay"></i>
+                <i class="bi bi-skip-end" id="next"></i>
+            </div>
+            <audio id="currentMusic" src=""> 
+                
+            </audio>
             <span id="currentStart">0:00</span>
             <div class="bar">
                 <input type="range" id="seek" min="0" value="0" max="100"> 
