@@ -15,25 +15,7 @@
         <div class="menu_side"> 
             <h1>Listen</h1>
             <div class="playlist">
-                <h3 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Playlist</h3>
-                <h4><span></span><i class="bi bi-music-note-beamed"></i>Upload Music</h4>
-
-                <br>
-                <label> Upload Your Music </label>
-                <input type="text" id="namebox" class="hidden" placeholder="Music Name" accept="audio/*">
-                <label id="extLabel" > </label>
-                <audio id="mySong" src=""></audio>
-                <br>
-                <button id="select" class=""> Select Song </button>
-                <button id="upload" class="hidden"> Upload Song </button>
-                <button id="cancelUpload" class="hidden"> Cancel </button>
-                <br><br>
-                <progress id="uploadProgress" value="0" max="100" class="hidden"></progress>
-                <br>
-                <label id="progress"></label>
-            </div>
-            <div class="border">
-                <hr>
+                <h3 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Groove Hits</h3>
             </div>
 <!--------------------------------------------Left bottom section-------------------------------------------------------> 
             <div class="menu_song"> 
@@ -87,15 +69,21 @@
                     </ul> 
                 </div>
             </nav> 
-            
+
             <!-- top section (Music Info)-->
             <div class="content">
-                <h1 id="songTitle">On My Way</h1>
-                <p id="artistTitle">Alan Walker</p>
-                <div class="buttons">
-                    <button>PLAY</button>
+                <div class="contentBanner">
+                    <h1 id="songTitle"> On My Way </h1>
+                    <p id="artistTitle"> Alan Walker </p>
+                    <div class="buttons">
+                        <button>PLAY</button>
+                    </div>
+                </div>
+                <div class="coverArt">
+                    <img src="images/1.jpg" alt="Cover Art" id="coverArtBanner" />
                 </div>
             </div>
+            
 
              <!-- recommended section -->
              <div class="popular_song">
