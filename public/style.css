@@ -29,7 +29,6 @@ header .menu_side, .song_side {
     height: 100%;
    /* border: 1px solid #fff; */
     background-color: #111727;
-    box-shadow: 5px 0px 2px #090f1f;
     color: #fff;
 
 }
@@ -111,7 +110,7 @@ header .menu_side .playlist .active .bi{
 }
 
 header .menu_side .border hr{
-    margin: 40px 20px 0 20px;
+    margin: 40px 20px 0 10px;
     border: 1px solid #4c5262;
 }
 header .menu_side .menu_song{
@@ -123,7 +122,7 @@ header .menu_side .menu_song{
 header .menu_side .menu_song li{
     position: relative;
     list-style-type: none;
-    padding: 5px 0px 5px 20px;
+    padding: 5px 0px 5px 0px;
     display: flex;
     align-items: center;
     margin-bottom: 10px;
@@ -176,17 +175,21 @@ header .song_side::before{
     z-index: -1;
 }
 header .song_side nav{
-    padding-top: 30px;
-    width: 90%;
+    padding-top: 20px;
+    width: 100%;
     height: 10%;
     margin: auto;
-    /* border: 1px solid #fff; */
+    /*border: 1px solid #fff; */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-bottom: 20px;
+    z-index: 3;
+    backdrop-filter: blur(50px);
 }
 header .song_side nav ul{
     display: flex;
+    margin-left: 30px;
 }
 header .song_side nav ul li {
     position: relative;
@@ -196,7 +199,7 @@ header .song_side nav ul li {
 header .song_side nav ul li a{
     text-decoration: none;
     font-size: 14px;
-    color: #4c5262;
+    color: #757a88;
     margin-right: 25px;
     cursor: pointer;
     transition: 0.5s linear;
@@ -256,7 +259,8 @@ header .song_side nav #logout{
     cursor: pointer;
     font-size: 14px;
     font-weight:500;
-    color: #4c5262;
+    color: #a4a8b4;
+    right: 30px;
 }
 header .song_side nav #logout:hover{
     color: #36e2ec;
@@ -264,6 +268,7 @@ header .song_side nav #logout:hover{
 
 /* ================================Song Info (Top part- name, artist, album art)=================================*/
 header .song_side .content {
+    display: flex;
     padding-left: 30px;
     width: 100%;
     height: 30%;
@@ -271,17 +276,24 @@ header .song_side .content {
     /* border: 1px solid #fff; */
     padding-top: 20px;
 }
+header .song_side .content .contentBanner{
+    display: inline-block;
+}
 header .song_side .content h1{
-   font-size: 25px;
-   font-weight: 600;
+    margin-top:40px;
+    font-size: 35px;
+   font-weight: 500;
 }
 header .song_side .content p{
-   font-size: 14px;
+    margin-top:0;
+    margin-bottom: 30px;
+   font-size: 20px;
    font-weight: 400;
    color: #4c5262;
 }
 header .song_side .content .buttons{
    margin-top: 15px;
+   margin-bottom: 10px;
 }
 header .song_side .content .buttons button{
    width: 80px;
@@ -300,22 +312,38 @@ header .song_side .content .buttons button:hover{
    background: #5adae0;
    color: #fff;
 }
-
+header .song_side .coverArt{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: -1;
+    width: 400px;
+    height: 400px;
+    opacity: 0.6;
+}
+header .song_side .coverArt img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
 /* ================================Recommended Songs=================================*/
 header .song_side .popular_song {
     padding-left: 30px;
     width: 100%;
     height: auto;
-   /* border: 1px solid #fff; */
+    /* border: 1px solid #fff; */
     margin: auto;
-    margin-top: 60px;
+    margin-top: 30px;
 }
-header .song_side .popular_song .h4{
+header .song_side .popular_song p{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-right: 30px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: 300;
  }
  header .song_side .popular_song .h4 .bi{
     color: #a4a8b4;
@@ -379,6 +407,7 @@ header .song_side .popular_song .pop_song li .img_play{
     color: #4c5262;
 }
 
+
 /*=========================== Artists =================*/
 
 header .song_side .popular_artists {
@@ -431,16 +460,75 @@ header .song_side .popular_artists .item li img{
  position: absolute;
 }
 
-
-
+/* ------- My music-----*/
 header .song_side .songList{
-    padding-left: 30px;
-    width: 90%;
+    width: 95%;
     height: auto;
     margin: 30px 5px 30px 30px;
-    border: 1px solid #fff;
-    margin-bottom: 80px;
+    /* border: 1px solid #fff; */
+    margin-bottom: 80px;  
 }
+header .song_side .songList ul{
+    list-style-type: none;
+    padding: 0;
+}
+header .song_side .songList ul li{
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #090f1f00;
+    height: 80px;
+    transition: 0.3s linear;
+}
+header .song_side .songList ul li:nth-child(odd){
+    padding: 20px;
+    background: #1117275d;
+}
+header .song_side .songList ul li:hover{
+    background: rgb(105, 105, 170,.1);
+}
+header .song_side .songList ul li span{
+    font-size: 12px;
+    font-weight:600;
+    color: #4c5262;
+}
+header .song_side .songList ul li img{
+    height: 50px;
+    width: 50px;
+}
+header .song_side .songList ul li #mysongTitle {
+    font-size: 18px;
+    margin-left: 20px;
+    font-weight: 400;
+    color: rgba(241, 241, 241, 0.671);
+}
+header .song_side .songList ul #myartistTitle{
+    font-size: 14px;
+    font-weight: 400;
+    color: #4c5262;
+}
+header .song_side .songList  li .bi{
+    position: absolute;
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight:600;
+    color: #4c5262;
+    opacity: 100;
+    right: 300px;
+    cursor: pointer;
+}
+header .song_side .songList  li .bi:hover{
+    color: #36e2ec;
+}
+header .song_side .songList  li #deleteButton{
+    right: 50px !important; 
+    font-size: 20px; 
+}
+header .song_side .songList  li #deleteButton:hover{
+    color: red;
+}
+
 
 
 /* ================================Master Play (bottom dock)=================================*/
@@ -721,61 +809,62 @@ header .right_side .uploadForm h1{
     font-weight: 500;
     margin-bottom: 20px;
 }
-header .right_side .uploadForm form label{
+header .right_side .uploadForm label{
     color: #4c5262;
     font-size: 18px;
 }
-header .right_side .uploadForm form .selection{
+header .right_side .uploadForm .selection{
     width: 100%;
     display: flex;
     align-items: center;
     margin: 5px 0 20px 0;
 }
-header .right_side .uploadForm form button{
+header .right_side .uploadForm button{
     height: 30px;
     width: 100px;
     border: none;
     cursor: pointer;
 }
-header .right_side .uploadForm form button:hover{
+header .right_side .uploadForm button:hover{
     color: #fff;
     background: transparent;
     border: 1px solid #fff;
 }
 
-header .right_side .uploadForm form .label{
+header .right_side .uploadForm .label{
     padding: 2px 0 0 5px;
     position: relative;
     height: 30px;
     width: 250px;
     border: 1px solid #fff;
     backdrop-filter: blur(5px);
+    width: 309px;
 }
-header .right_side .uploadForm form input{
+header .right_side .uploadForm input{
     background: none;
     outline: none;
     border: none;
     color: #a4a8b4;
     font-size: 15px;
-    
+    width: 300px;
 }
-header .right_side .uploadForm form .options{
+header .right_side .uploadForm .options{
     display: flex;
     width: 50%;
 }
-header .right_side .uploadForm form select{
+header .right_side .uploadForm select{
     margin-left: 20px;
     width: 100px;
 }
-header .right_side .uploadForm form .progress, p{
+header .right_side .uploadForm .progress, p{
     margin-top: 20px;
     color: #4c5262;
     font-size: 12px;
 }
-header .right_side .uploadForm form .submit{
+header .right_side .uploadForm .submit{
     margin: 30px 0 30px 0;
 }
-header .right_side .uploadForm form .submit .upload{
+header .right_side .uploadForm .submit .upload{
     background: #36e2ec;
     color: #090f1f;
     font-size:16px;
@@ -784,14 +873,14 @@ header .right_side .uploadForm form .submit .upload{
     height: 40px;
     width: 120px;
 }
-header .right_side .uploadForm form .submit .upload:hover{
+header .right_side .uploadForm .submit .upload:hover{
     background: none;
     color: #36e2ec;
     border-radius: 5px;
     border: 1px solid #36e2ec;
     
 }
-header .right_side .uploadForm form .submit .cancel{
+header .right_side .uploadForm .submit .cancel{
     background:none;
     border: 1px solid rgba(253, 27, 27, 0.274); 
     color: rgba(253, 27, 27, 0.274); 
@@ -800,7 +889,7 @@ header .right_side .uploadForm form .submit .cancel{
     height: 40px;
     width: 120px;
 }
-header .right_side .uploadForm form .submit .cancel:hover{
+header .right_side .uploadForm .submit .cancel:hover{
     background:rgba(253, 27, 27, 0.274); 
     color: #fff;
     border: none;
