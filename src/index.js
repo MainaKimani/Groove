@@ -35,33 +35,49 @@ const storage = getStorage();
 
 
 //--------------------------------------variables and references-------------------------------------//
-var files = [];
+var songFiles = [];
+var imgFiles=[];
 const reader = new FileReader();
 const namebox =document.getElementById("namebox");
+const imgNamebox =document.getElementById("imgNamebox");
 const extLabel =document.getElementById("extLabel");
+const imgLabel =document.getElementById("imgLabel");
 const mySong =document.getElementById("mySong");
-const select =document.getElementById("select");
+const selectSong =document.getElementById("selectSong");
+const selectImage =document.getElementById("selectImage");
 const upload =document.getElementById("upload");
 const progress =document.getElementById("progress");
 const uploadProgress=document.getElementById("uploadProgress");
+const artistTitle = document.getElementById("artistTitle");
+const ftArtists = document.getElementById("ftArtists");
+const genre = document.getElementById("genre");
 const cancelUpload=document.getElementById("cancelUpload");
 
 //create an input element that will allow the user to select a file
-const input = document.createElement("input");
-input.type = "file";
-
-input.onchange = (e) => {
-  files = e.target.files;
-
-  
-
-  const extention = GetFileExt(files[0]);
-  const name = GetFileName(files[0]);
+const songInput = document.createElement("input");
+songInput.type = "file";
+songInput.onchange = (e) => {
+  songFiles = e.target.files;
+  const extention = GetFileExt(songFiles[0]);
+  const name = GetFileName(songFiles[0]);
 
   namebox.value = name;
-  extLabel.innrHTML = extention;
+  extLabel.innerHTML = extention;
 
-  reader.readAsDataURL(files[0]);
+  reader.readAsDataURL(songFiles[0]);
+}
+
+const imgInput = document.createElement("input");
+imgInput.type = "file";
+imgInput.onchange = (e) => {
+  imgFiles = e.target.files;
+  const extention = GetFileExt(imgFiles[0]);
+  const name = GetFileName(imgFiles[0]);
+
+  imgNamebox.value = name;
+  imgLabel.innerHTML = extention;
+
+  reader.readAsDataURL(imgFiles[0]);
 }
 
 //After reading a file, assign it to the audio element
@@ -73,9 +89,12 @@ reader.onload = function(){
 
 
 //-----------------------selection function-------------------------//
-select.onclick = function(){
-  input.click();
+selectSong.onclick = function(){
+  songInput.click();
+}
 
+selectImage.onclick = function(){
+  imgInput.click();
 }
 
 function GetFileExt(file){
@@ -88,34 +107,20 @@ function GetFileName(file){
   const temp = file.name.split('.');
   var fname = temp.slice(0, -1).join('.');
 
-  namebox.classList.remove("hidden");
-  select.classList.add("hidden");
-  upload.classList.remove("hidden");
-  cancelUpload.classList.remove("hidden");
-
   return fname;
-}
-
-cancelUpload.onclick = function(){
-  namebox.value = '';
-  files=[];
-  namebox.classList.add("hidden");
-  select.classList.remove("hidden");
-  upload.classList.add("hidden");
-  cancelUpload.classList.add("hidden");
 }
 
 //--------------------------upload to cloud-storage--------------------------//
 async function uploadProcess(){
-  const songToUpload = files[0];
-  const songName = namebox.value + extLabel.innrHTML;
+  /*Upload song*/
+  const songToUpload = songFiles[0];
+  const songName = namebox.value + extLabel.innerHTML;
   const metaData = {
       contentType: songToUpload.type
   }
 
   const storeRef = storageRef(storage, "Songs/"+ songName);
   const uploadTask = uploadBytesResumable(storeRef, songToUpload,metaData);
-
   uploadTask.on('state-changed',
   (snapshot)=>{
       uploadProgress.classList.remove("hidden");
@@ -123,24 +128,40 @@ async function uploadProcess(){
       progress.innerHTML = 'Uploading: '+progressPercentage+'%';
       uploadProgress.value = progressPercentage;
       if (progressPercentage == 100){
-        namebox.classList.add("hidden");
-        select.classList.remove("hidden");
-        upload.classList.add("hidden");
-        cancelUpload.classList.add("hidden");
-        uploadProgress.classList.add("hidden");
-        progress.innerHTML =  "";
+        uploadProgress.classList.add ("hidden");
+        progress.innerHTML =  "Music upload was successful";
       }
     },
     (error) => {
       alert('Error: File not uploaded. Please try again.')
     },
     ()=>{
-      getDownloadURL(uploadTask.snapshot.ref)
+      getDownloadURL(storeRef)
       .then((downloadURL)=>{
         SaveURLtoFirestore(downloadURL);
         console.log(downloadURL);
       });
     });
+
+    /*Upload image*/
+    const imageToUpload = imgFiles[0];
+    const imageName = imgNamebox.value+imgLabel.innerHTML;
+    const storeImgRef = storageRef(storage, "Images/"+ imageName);
+    const uploadImgTask = uploadBytesResumable(storeImgRef, imageToUpload);
+    uploadImgTask.on('state-changed',
+    (snapshot)=>{
+        
+      },
+      (error) => {
+        alert('Error: Image File not uploaded. Please try again.')
+      },
+      ()=>{
+        getDownloadURL(storeImgRef)
+        .then((downloadURL)=>{
+          SaveImageURLtoFirestore(downloadURL);
+          console.log(downloadURL);
+        });
+      });
   }
 
 
@@ -148,56 +169,43 @@ async function uploadProcess(){
 //------------------------------Saving to firestore --------------------------------------//
 async function SaveURLtoFirestore(url){
   const name = namebox.value;
-  const ext = extLabel.innerHTML;
-
+  const artist = artistTitle.value;
+  const featured = ftArtists.value;
+  const type = genre.value;
   //Setting up the firestore collection of the song URL
-  const ref = doc(db, "SongURL/"+name);
-
+  var ref = doc(db, "songs/"+name);
   await setDoc(ref,{
-    songName: (name+ext),
-    songURL: url  
-  })
+    songName: (name),
+    songURL: url,
+    artist: (artist),
+    featured: (featured),
+    genre: (type)
+  },
+  { merge: true })
+
+// Resetting the input fields
+namebox.value="";
+imgNamebox.value="";
+extLabel.value="";
+artistTitle.value="";
+ftArtists.value="";
+genre.value="";
 }
 
+async function SaveImageURLtoFirestore(url){
+  const name = namebox.value;
+  //Setting up the firestore collection of the image  URL
+  var imgRef = doc(db, "songs/"+name);
+  await setDoc(imgRef,{
+    ImageUrl: url
+  },
+  { merge: true })
+
+  // Resetting the input fields
+  imgLabel.value="";
+}
 upload.onclick = uploadProcess;
 
 //----------------------------------------fetch from firestore--------------------------//
 
-//reference Songs collection 
-const colRef = collection(db, 'SongURL')
-//get collection data
-getDocs(colRef)
-.then((snapshot)=>{
-  let songs = [];
-  snapshot.docs.forEach((doc)=>{
-
-    renderList(doc);
-
-    songs.push({ ...doc.data(), 
-                 id: doc.id })
-  })
-  console.log(songs)
-})
-.catch(err => {
-  console.log(err.message)
-})
-
-//Reference to the list tag on the html page
-const songList = document.querySelector('#songList');
-
-//create element and render song list
-function renderList(doc){
-  let li=document.createElement('li');
-  let name = document.createElement('span');
-  let url = document.createElement('span');
-
-  li.setAttribute('data-id', doc.id);
-
-  name.textContent=doc.data().songName;
-  
-
-  li.appendChild(name);
- 
-
-  songList.appendChild(li); 
-}
+//see fetch.js
