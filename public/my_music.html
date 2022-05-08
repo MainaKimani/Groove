@@ -13,28 +13,15 @@
 
 <!--------------------------------------------Left top section-------------------------------------------------------> 
         <div class="menu_side"> 
-            <h1>Listen</h1>
+            <h1>Groove Hits</h1>
             <div class="playlist">
-                <h3 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Playlist</h3>
+                <h3 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Discover</h3>
                 <h4><span></span><i class="bi bi-music-note-beamed"></i>Upload Music</h4>
-
-                <br>
-                <label> Upload Your Music </label>
-                <input type="text" id="namebox" class="hidden" placeholder="Music Name" accept="audio/*">
-                <label id="extLabel" > </label>
-                <audio id="mySong" src=""></audio>
-                <br>
-                <button id="select" class=""> Select Song </button>
-                <button id="upload" class="hidden"> Upload Song </button>
-                <button id="cancelUpload" class="hidden"> Cancel </button>
-                <br><br>
-                <progress id="uploadProgress" value="0" max="100" class="hidden"></progress>
-                <br>
-                <label id="progress"></label>
             </div>
             <div class="border">
                 <hr>
             </div>
+
 <!--------------------------------------------Left bottom section-------------------------------------------------------> 
             <div class="menu_song"> 
                 <li class="songItem">
@@ -90,26 +77,40 @@
             
             <!-- top section (Music Info)-->
             <div class="content">
-                <h1 id="songTitle">On My Way</h1>
-                <p id="artistTitle">Alan Walker</p>
-                <div class="buttons">
-                    <button>PLAY</button>
+                <div class="contentBanner">
+                    <h1 id="songTitle"> </h1>
+                    <p id="artistTitle"> </p>
+                    <div class="buttons">
+                        <button>PLAY</button>
+                    </div>
+                </div>
+                <div class="coverArt">
+                    <img src="" alt="Cover Art" id="coverArtBanner" />
                 </div>
             </div>
+            
 
              <!-- recommended section -->
              <div class="popular_song">
                 <div class="h4">
-                    <h4>Uploaded Music</h4>
+                    <p>Uploaded Music</p>
                 </div>
-
-               
             </div>
 
-            
-
             <div class="songList">
-                <ul id=songList> </ul>
+                <ul id="songList">
+                    <!----------------Uncomment for testing purposes------------------------------ 
+                    <li>
+                        <img src="images/img.jpg" alt="cover art">
+                        <div id="mysongTitle"> On My Way 
+                        <div id="myartistTitle"> Alan Walker </div>
+                        </div>
+                        <i class="bi playlistPlay bi-play-circle" id="playButton"></i>
+                        <i class="bi bi-trash3" id="deleteButton" title="Delete Music"></i>
+                    </li>
+                    -->
+
+                </ul>
             </div>
         </div>
     </header>
@@ -147,7 +148,7 @@
 
         </div>
     <script type="module" src="logout.js"></script>
-    <script type="module" src="bundle.js"></script>
+    <script type="module" src="fetch.js"></script>
     
 
 </body>
