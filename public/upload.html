@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="bundle.js"></script>
     <title>Groove Hits</title>
 </head>
 <body>
@@ -17,27 +18,31 @@
             <nav>
                 <ul>
                     <li class=""><a href="play.html"> Discover </a></li>
-                    <li class=""><a href="my_music.html"> My Music </a></li>
-                    <li class="active"><a href=""> Upload Music </a></li> 
+                    <li id="my_music" class=""><a href="my_music.html"> My Music </a></li>
+                    <li id="uploadLink" class="active"><a href=""> Upload Music </a></li> 
                 </ul>
                 <div class="search"> </div>
 
                 <div class="user">
-                    <img src="images/ctaIMG.webp" alt="User" title="Maina Kimani">
+                    <img id="userDP"  class="hidden" src="images/ctaIMG.webp" alt="User" title="Maina Kimani">
+                    <span id="userID" class=""></span>
                 </div>
 
-                <div class="logout">
+                <div class="auth">
                     <ul>
-                        <li id="logout">
+                        <li id="logout" class="hidden auth">
                             Log Out
+                          </li>
+                          <li id="login" class="hidden auth">
+                            Log in
                           </li>
                     </ul> 
                 </div>
             </nav> 
 <!--------------------------------------------form section -------------------------------------------------------> 
 
-<div class="uploadForm">
-
+<div class="uploadForm" id="display1">
+    <div class="hidden" id="display2">
     
         <h1>Upload Your Music</h1>
 
@@ -75,18 +80,21 @@
                 <label id="artistFtLabel">Select the Genre *</label><br>
                 <select name="genre" id="genre">
                     <option value="">Select Genre</option>
-                    <option value="Afro-Beats">Afro-Beats</option>
-                    <option value="Afro-Soul">Afro-Soul</option>
-                    <option value="Amapiano">Amapiano</option>
-                    <option value="Drill">Drill</option>
-                    <option value="Gengetone">Gengetone</option>
-                    <option value="Gospel">Gospel</option>
-                    <option value="Hip-Hop">Hip-Hop</option>
-                    <option value="House">House</option>
-                    <option value="Pop">Pop</option>
-                    <option value="Reggea">Reggea</option>
+                    <option value="afrobeats">Afro-Beats</option>
+                    <option value="afrosoul">Afro-Soul</option>
+                    <option value="amapiano">Amapiano</option>
+                    <option value="bongo">Bongo</option>
+                    <option value="country">Country</option>
+                    <option value="drill">Drill</option>
+                    <option value="gengetone">Gengetone</option>
+                    <option value="gospel">Gospel</option>
+                    <option value="hiphop">Hip-Hop</option>
+                    <option value="house">House</option>
+                    <option value="pop">Pop</option>
+                    <option value="reggea">Reggea</option>
                     <option value="RnB">RnB</option>
-                    <option value="Soul">Soul</option>
+                    <option value="soul">Soul</option>
+                    <option value="softRock">Soft-Rock</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
@@ -103,13 +111,13 @@
                 <button id="cancelUpload" class="cancel"> Cancel </button>
                 </div>
 
-          
+            </div>
 
     </div>
 
     </header>
     <script type="module" src="logout.js"></script>
-    <script type="module" src="bundle.js"></script>
+    <script type="module" src="upload.js"></script>
     
 
 </body>
