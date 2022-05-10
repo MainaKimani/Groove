@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase
 import { getAuth, 
          createUserWithEmailAndPassword,
          signInWithPopup,
-         signInWithRedirect,
+         updateProfile,
          FacebookAuthProvider,
          TwitterAuthProvider,
          GoogleAuthProvider
@@ -36,13 +36,13 @@ signupForm.addEventListener('submit', (e)=>{
   e.preventDefault()
   
   //Getting the input fields
-  const email = signupForm.email.value
-  const password = signupForm.password.value
-  const username = signupForm.username.value
+  const email = signupForm.email.value;
+  const password = signupForm.password.value;
+  const username = signupForm.username.value;
 
   //validate input fields
   if (validate_email(email) == false) {
-    alert('Please add a valid email address')
+    alert('Please add a valid email address');
     return
     // Don't continue running the code
   }
@@ -63,7 +63,11 @@ signupForm.addEventListener('submit', (e)=>{
       console.log('User created:', user); 
       signupForm.reset()
 
-    window.location.href = "play.html"
+      updateProfile(auth.currentUser, {
+        displayName: username
+      }).then(() => {
+        window.location.href = "play.html"
+      })
     })
     .catch((error) => {
       const errorCode = error.code;
