@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
+    <script type="module" src="bundle.js"></script>
     <title>Groove Hits</title>
 </head>
 <body>
     <header> 
 
 <!--------------------------------------------Left top section-------------------------------------------------------> 
-        <div class="menu_side"> 
+        <div class="menu_side hidden"> 
             <h1>You Own This</h1>
             <div class="playlist">
                 <h3 class="active"><span></span><i class="bi bi-music-note-beamed"></i>Groove Hits</h3>
@@ -44,12 +45,12 @@
         </div>
 
 <!--------------------------------------------Right section -------------------------------------------------------> 
-        <div class="song_side"> 
+        <div class="song_side"  style ="width: 100%"> 
             <nav>
                 <ul>
                     <li class=""><a href="play.html"> Discover </a></li>
-                    <li class="active"><a href=""> My Music </a></li>
-                    <li class=""><a href="upload.html"> Upload Music </a></li>
+                    <li class="active" id="my_music"><a href=""> My Music </a></li>
+                    <li class="" id="uploadLink"><a href="upload.html"> Upload Music </a></li>
                      
                 </ul>
                 
@@ -59,25 +60,29 @@
                 </div>
 
                 <div class="user">
-                    <img src="images/ctaIMG.webp" alt="User" title="Maina Kimani">
+                    <img id="userDP" class="hidden" src="" alt="User" title="">
+                    <span id="userID" class=""></span>
                 </div>
 
                 <div class="logout">
                     <ul>
-                        <li id="logout">
+                        <li id="logout" class="hidden auth">
                             Log Out
+                          </li>
+                          <li id="login" class="hidden auth">
+                            Log in
                           </li>
                     </ul> 
                 </div>
             </nav> 
             
             <!-- top section (Music Info)-->
-            <div class="content">
+            <div class="content" style="margin-left:50px">
                 <div class="contentBanner">
                     <h1 id="songTitle"> </h1>
                     <p id="artistTitle"> </p>
-                    <div class="buttons">
-                        <button id="playBanner">PLAY</button>
+                    <div class="buttons" id="contButton">
+                        <button id='playBanner' class="hidden"> </button>
                     </div>
                 </div>
                 <div class="coverArt">
@@ -88,7 +93,7 @@
 
              <!-- recommended section -->
              <div class="popular_song">
-                <div class="h4">
+                <div class="h4" id="uploadedMusic" style="margin-left:50px">
                     <p>Uploaded Music</p>
                 </div>
             </div>
