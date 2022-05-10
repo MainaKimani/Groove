@@ -6,7 +6,12 @@ import { getFirestore,
     deleteDoc,
     getDocs,
     getDoc,
+    query,
+    where
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
+import { getAuth, 
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -22,14 +27,12 @@ const firebaseConfig = {
 // Initialize Firebase and servises
 const app = initializeApp(firebaseConfig);
 const db = getFirestore();
+const auth = getAuth();
 
 console.log ('Fetch!')
 
 
 //----------------------------------------fetch from firestore--------------------------//
-
-//reference Songs collection 
-const colRef = collection(db, 'songs')
 
 //limits output to desired characters
 function limit (string ='', limit =0){
@@ -38,53 +41,69 @@ function limit (string ='', limit =0){
 
 let songs = [];
 
-//get collection data
-getDocs(colRef)
-.then((snapshot)=>{
-  snapshot.docs.forEach((doc)=>{
-    renderList(doc);
+//get collection data associated to the user id
+onAuthStateChanged(auth, async (user) => {
+  console.log(user.uid);
+  //reference Songs collection 
+  const colRef = query(collection(db, 'songs'), where("user", "==", user.uid));
+
+  await getDocs(colRef)
+  .then((snapshot)=>{
+    snapshot.docs.forEach((doc)=>{
+      renderList(doc);
+
+      songs.push({ ...doc.data(), 
+                   id: doc.id })
+    })
+    console.log(songs)
+    const contButton =  document.getElementById("contButton");
+    if (songs.length == 0){
+      document.getElementById("songTitle").innerHTML = "Upload your own music";
+      document.getElementById("playBanner").innerHTML = "Upload";
+      document.getElementById("playBanner").classList.remove("hidden");
+      document.getElementById("uploadedMusic").innerHTML = "No Music uploaded yet";
+      document.getElementById("uploadedMusic").setAttribute("style", 'height:50vh');
+      document.getElementById("playBanner").addEventListener('click', ()=>{ 
+        window.location.href = "upload.html";
+      })
+    }
+    else {
+      document.getElementById("playBanner").innerHTML = "PLAY";
+      document.getElementById("playBanner").classList.remove("hidden");
     
-    songs.push({ ...doc.data(), 
-                 id: doc.id })
+    var random = Math.floor(Math.random() * songs.length);
+    let image = songs[random].ImageUrl;
+    let title = songs[random].songName;
+    let artist = songs[random].artist;
+    let music = songs[random].songURL;
+    //characters limited to 25
+    let str = songs[random].featured;
+    if (str.length > 40){
+      var featured = limit(str, 40) +"...";
+    } else{
+      featured = str;
+    }
+  
+    //Set top Banner
+    document.getElementById("songTitle").innerHTML = title;
+    if (str == ""){
+      document.getElementById("artistTitle").innerHTML = artist;
+    } else{
+      document.getElementById("artistTitle").innerHTML = artist + " ft. " + featured;
+    }
+    document.getElementById("coverArtBanner").src = image;
+  
+    //setup masterPlay
+    document.getElementById("masterPlayTitle").innerHTML = title;
+    document.getElementById("masterPlayArtist").innerHTML = artist;
+    document.getElementById("masterPlayArt").src = image;
+    document.getElementById("currentMusic").src = music;
+    }
   })
-  console.log(songs)
+  .catch(err => {
+    console.log(err)
+  })
 
-  var random = Math.floor(Math.random() * songs.length);
-  let image = songs[random].ImageUrl;
-  let title = songs[random].songName;
-  let artist = songs[random].artist;
-  let music = songs[random].songURL;
-  //characters limited to 25
-  let str = songs[random].featured;
-  if (str.length > 40){
-    var featured = limit(str, 40) +"...";
-  } else{
-    featured = str;
-  }
-  
-
-  
-
-  //Set top Banner
-  document.getElementById("songTitle").innerHTML = title;
-  if (str == ""){
-    document.getElementById("artistTitle").innerHTML = artist;
-  } else{
-    document.getElementById("artistTitle").innerHTML = artist + " ft. " + featured;
-  }
-  document.getElementById("coverArtBanner").src = image;
-
-
-  //setup masterPlay
-  
-  document.getElementById("masterPlayTitle").innerHTML = title;
-  document.getElementById("masterPlayArtist").innerHTML = artist;
-  document.getElementById("masterPlayArt").src = image;
-  document.getElementById("currentMusic").src = music;
-
-})
-.catch(err => {
-  console.log(err)
 })
 
 
@@ -93,6 +112,8 @@ const songList = document.querySelector('#songList');
 
 //create element and render song list
 function renderList(docc){
+  
+
   let li=document.createElement('li');
   li.setAttribute('data-id', docc.id);
 
@@ -102,7 +123,7 @@ function renderList(docc){
 
   const titleDiv = document.createElement('div');
   titleDiv.setAttribute('id','mysongTitle');
-  titleDiv.textContent=docc.data().songName;
+  titleDiv.textContent=    docc.data().songName;
 
   const artistDiv = document.createElement('div');
   artistDiv.setAttribute('id','myartistTitle');
@@ -143,7 +164,6 @@ deleteIcon.addEventListener("click", async (e) => {
   let id = e.target.parentElement.getAttribute("data-id");
   await deleteDoc(doc(db, "songs",id));
 })
-
 //fetch data of highlighted songs and play
 masterPlay.addEventListener("click", async (e) =>{
   let id = e.target.parentElement.getAttribute("data-id");
@@ -187,8 +207,10 @@ let wave = document.getElementsByClassName('wave')[0];
 masterPlay.addEventListener('click', ()=>{ 
   playMusic();
 })
+
 document.getElementById("playBanner").addEventListener('click', ()=>{ 
   playMusic();
+
 });
 
 //play music funtionality 
