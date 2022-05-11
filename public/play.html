@@ -21,10 +21,10 @@
             <div class="menu_song"> 
                 <li class="songItem">
                     <span>01</span>
-                    <img src="images/img.jpg" alt="cover art">
+                    <img src="images/1.jpg" alt="cover art">
                     <h5>
-                        Smooth Criminal
-                        <div class="artist"> Micheal Jackson </div>
+                        On My Way
+                        <div class="artist"> Alan Walker </div>
                         <i class="bi playlistPlay bi-play-circle" id="1"></i>
                     </h5>
                 </li>
@@ -83,14 +83,33 @@
                         <button id='playBanner'>PLAY</button>
                     </div>
                 </div>
-                <div class="coverArt" style ='height:300px; width:300px; top: 20px;'>
+                <div class="coverArt">
                     <img src="images/1.jpg" alt="Cover Art" id="coverArtBanner" />
                 </div>
             </div>
-            
+            <div class="comment"> 
+                <p id="comments"> comments... </p>
+                <div id="commentSection" class="hidden"> 
+                     <div class="userInput">
+                         <h4 class="user"> Maina Kimani</h4>
+                         <p class="input"> Great Song! I love the music and this got me hooked!</p>
+                     </div>
+                     <div class="userInput">
+                        <h4 class="user"> Winnie Shivika</h4>
+                        <p class="input"> The song is a hit...</p>
+                    </div>
+
+                    <i id="closeComments" class="bi bi-x-circle"></i>
+                    <input id="comment" type="text">
+                    <button id="commentBtn">Comment</button>
+                </div>
+                
+                
+            </div>
+
 
              <!-- recommended section -->
-             <div class="popular_song">
+             <div class="popular_song hidden">
                 <div class="h4">
                     <p>Recommended</p>
                     <div class="btn_s">
@@ -99,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="pop_song">
+                <div class="pop_song" id="hit">
                     <li class="songItem">
                         <div class="img_play">
                             <img src="images/1.jpg" alt="On my way">
@@ -155,6 +174,36 @@
                         </h5>
                     </li>
 
+                    <li class="songItem">
+                        <div class="img_play">
+                            <img src="images/1.jpg" alt="On my way">
+                            <i class="bi playListPlay bi-play-circle-fill" id="7"></i>
+                        </div>
+                        <h5>On My Way
+                            <br>
+                            <div class="subtitle">Alan Walker</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <div class="img_play">
+                            <img src="images/1.jpg" alt="On my way">
+                            <i class="bi playListPlay bi-play-circle-fill" id="7"></i>
+                        </div>
+                        <h5>On My Way
+                            <br>
+                            <div class="subtitle">Alan Walker</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <div class="img_play">
+                            <img src="images/1.jpg" alt="On my way">
+                            <i class="bi playListPlay bi-play-circle-fill" id="7"></i>
+                        </div>
+                        <h5>On My Way
+                            <br>
+                            <div class="subtitle">Alan Walker</div>
+                        </h5>
+                    </li>
                     <li class="songItem">
                         <div class="img_play">
                             <img src="images/1.jpg" alt="On my way">
@@ -190,7 +239,7 @@
                 </div>
             </div>
 
-            <div class="popular_artists">
+            <div class="popular_artists hidden">
                 <div class="h4">
                     <p>Recommended Artists</p>
                     <div class="btn_s">
@@ -200,43 +249,36 @@
                 </div>
                 <div class="item">
                     <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
-                    <li><img src="images/alan.jpg" alt="Alan Walker" title="Alan Walker"></li>
+                  
                 </div>
 
             </div>
 <div class="category">
     <ul>
-        <li style="font-size:30px; font-weight:200">
+        <li id="discover" style="font-size:30px; font-weight:200">
             Discover Great Music
         </li>
         <ul> 
-            <li style ='height:30px; padding:10px'>Genre</li>
-            <li style="padding:0; height:30px"> 
+            <li id="genreOption" style ='height:50px; padding:10px'>Genre</li>
+            <li id="genreOptions1" class="hidden" style="padding:0; height:30px"> 
                 <button class="selectGenre">Afro-Beats</button> 
                 <button class="selectGenre">Afro-soul</button> 
                 <button class="selectGenre">Amapiano</button> 
                 <button class="selectGenre">Bongo</button>
-                <button class="selectGenre">country</button>
+                <button class="selectGenre">Country</button>
                 <button class="selectGenre">Drill</button>
                 <button class="selectGenre">Gengetone</button>
                 <button class="selectGenre">Gospel</button>
+            </li>
+            <li id="genreOptions2" class="hidden" style="padding:0; height:30px"> 
                 <button class="selectGenre">Hip-Hop</button>
                 <button class="selectGenre">House</button>
                 <button class="selectGenre">Pop</button>
-                <button class="selectGenre">Reggea</button>
+                <button class="selectGenre">Reggae</button>
                 <button class="selectGenre">RnB</button>
                 <button class="selectGenre">Soft-Rock</button>
                 <button class="selectGenre">Soul</button>
+                <button class="selectGenre">Play All Genres</button>
             </li>
         </ul>
         

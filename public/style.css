@@ -328,6 +328,83 @@ header .song_side .coverArt img{
     height: 100%;
 }
 
+/*-----------------------------------------comments section------------------------------------------------*/
+header .song_side .comment{
+   /* border: 1px solid #fff; */
+    padding-bottom: 50px;
+    position: relative;
+ }
+ header .song_side #comments{
+     font-size: 18px;
+     padding-left: 30px;
+     margin-bottom: 20px;;
+     color: #5ad9e0a4;
+     cursor: pointer;
+ }
+ header .song_side #comments:hover{
+    color: #f1f1f1;
+}
+ header .song_side .comment #commentSection{
+     position: relative;
+    font-size: 15px;
+    padding-left: 30px;
+    padding-top: 20px;
+    background-color: #0b1320;
+   /* border: 1px solid #fff; */
+    min-height: 310px;
+}
+header .song_side .comment #commentSection .userInput{
+    display: block;
+    margin-top: 15px;
+    padding:10px 30px 10px 20px !important;
+    font-size: 15px;
+    padding-left: 30px;
+    border-radius: 3px;
+    background-color: rgba(121, 121, 173, 0.1);
+    min-width: 50px;
+    max-width: 800px;
+}
+header .song_side .comment #commentSection .user{
+    font-size:17px;
+    font-weight:500;
+}
+header .song_side .comment #commentSection .input{
+    font-size:16px;
+    font-weight:400;
+    color: rgb(182, 181, 181);
+    margin-top: 0px !important;
+}
+header .song_side .comment #comment{
+    font-size: 15px;
+    padding-left: 30px;
+    width:95%;
+    height: 40px;
+    margin-top: 15px;
+    border-radius: 10px;
+    margin: 10px 10px;
+}
+header .song_side .comment #commentBtn{
+    font-size: 15px;
+    width: 100px;
+    height: 30px;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+header .song_side .comment .bi{
+    position: absolute;
+    font-size: 20px;
+    right: 20px;
+    top: 35px;
+    cursor: pointer;
+    color: rgb(182, 181, 181);
+    
+}
+header .song_side .comment .bi:hover{
+    position: absolute;
+    font-size: 23px;
+    color: rgb(253, 27, 27); 
+}
+
 /* ================================Recommended Songs=================================*/
 header .song_side .popular_song {
     padding-left: 30px;
@@ -335,7 +412,7 @@ header .song_side .popular_song {
     height: auto;
     /* border: 1px solid #fff; */
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 header .song_side .popular_song p{
     color: #b6b6b6;
@@ -486,17 +563,30 @@ header .song_side .songList{
 header .song_side .songList ul{
     list-style-type: none;
     padding: 0;
+    min-height: 310px;
 }
 header .song_side .category ul li{
     padding-left: 50px !important;
     position: relative;
     display: flex;
-    align-items: center;
     padding: 20px;
+    padding: 50px;
     border-bottom: 1px solid #090f1f00;
     height: 80px;
     transition: 0.3s linear;
-    background: #111727;
+    background: #0b1320;
+    align-items: flex-start;
+}
+header .song_side .category ul li #genreOptions{
+    display: inline-block;
+    }
+#genreOption:hover{
+color:#36e2ec;
+cursor: pointer;
+}
+.selectGenre{
+margin-right: 20px;
+width: 120px !important;
 }
 header .song_side .songList ul li{
     padding-left: 50px !important;
@@ -917,6 +1007,7 @@ header .right_side .uploadForm input{
     color: #a4a8b4;
     font-size: 15px;
     width: 300px; 
+    margin-bottom: 15px;
 }
 header .right_side .uploadForm .options{
     display: flex;
@@ -947,8 +1038,7 @@ header .right_side .uploadForm .submit .upload:hover{
     background: none;
     color: #36e2ec;
     border-radius: 5px;
-    border: 1px solid #36e2ec;
-    
+    border: 1px solid #36e2ec; 
 }
 header .right_side .uploadForm .submit .cancel{
     background:none;
@@ -968,6 +1058,85 @@ header .right_side .uploadForm .submit .cancel:hover{
     height: 40px;
     width: 120px;
 }
+/*------------------------------------Edit Div---------------------------------------------*/
+#editDiv{
+display: inline-flex;
+    position: relative;
+    display: flex;
+   width: 100%;
+   height: 150px;
+   background-color: #fff;
+   
+   height: 80px;
+} 
+.leftDiv input{
+   width: 300px;
+   height: 30px;
+   padding-left: 10px;
+   margin: 10px 15px;
+   border-radius: 5px;
+   outline: none;
+   color: #131312;
+   font-size: 18px;
+   width: 300px; 
+}
+input:hover{
+     border: 1px solid #0b1320;
+     color: #0b1320;
+}
+#songList label{
+    padding-left: 60px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #f1f1f1;
+ }
+#editSubmit{
+    position: absolute;
+    background:none;
+    border: 1px solid #fff; 
+    color: #fff;
+    font-size:16px;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    right: 15px;
+    bottom: 60px;
+ }
+#editSubmit:hover{
+    background: #36e3ecaf;
+    color: black;
+    border: none;
+}
+#editCancel{
+    position: absolute;
+    background:none;
+    border: 1px solid rgba(253, 27, 27, 0.849); 
+    color: rgba(253, 27, 27, 0.829);
+    font-size:16px;
+    border-radius: 5px;
+    height: 40px;
+    width: 120px;
+    right: 15px;
+    bottom: 0px;
+}
+#editCancel:hover{
+    background:rgba(253, 27, 27, 0.76); 
+    color: #fff;
+    border: none;
+}
+ .leftDiv{
+margin-top: 10px;
+width: 50%;
+margin-left: 15px;
+height: -50px;
+}
+ .rightDiv{
+    width: 50%;
+}
+.rightDiv #editfeatured{
+    margin-bottom: 70px !important;
+}
+
 .hidden{
 	display: none!important;
 }

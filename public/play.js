@@ -100,7 +100,6 @@ getDocs(colRef)
   console.log(err)
 })
 
-
 //Reference to the list tag on the html page
 const songList = document.querySelector('#songList');
 //create element and render song list
@@ -278,158 +277,204 @@ back.addEventListener('click', () =>{
   }
 })
 
-/*
+
 let left_scroll = document.getElementById('left_scroll');
 let right_scroll = document.getElementById('right_scroll');
-let pop_song = document.getElementsByClassName('pop_song')[0];
+let hit = document.getElementById('hit');
 
 left_scroll.addEventListener('click', () =>{
-  pop_song.scrollleft -= 330;
+  hit.scrollleft -= 330;
 })
 right_scroll.addEventListener('click', () =>{
-  pop_song.scrollleft += 330;
+  hit.scrollleft += 330;
 })
-*/
+
 
 //Category selection
 var category;
+var discover=document.getElementById('discover');
+var genreOption=document.getElementById('genreOption');
+var genreOptions1 = document.getElementById('genreOptions1');
+var genreOptions2 = document.getElementById('genreOptions2');
+
+genreOption.addEventListener('click', ()=>{
+    genreOptions1.classList.remove('hidden');
+    genreOptions2.classList.remove('hidden');
+})
+
+
 var afrobeats=document.getElementsByClassName('selectGenre')[0];
 afrobeats.addEventListener('click', ()=>{
     category =afrobeats.innerHTML;
-    console.log(category);
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var afrosoul=document.getElementsByClassName('selectGenre')[1];
 afrosoul.addEventListener('click', ()=>{
     category = afrosoul.innerHTML;
-    console.log(category);
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var amapiano=document.getElementsByClassName('selectGenre')[2];
 amapiano.addEventListener('click', ()=>{
     category = amapiano.innerHTML;
-    console.log(category);
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var bongo=document.getElementsByClassName('selectGenre')[3];
 bongo.addEventListener('click', ()=>{
     category = bongo.innerHTML;
-    console.log(category);
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var country=document.getElementsByClassName('selectGenre')[4];
 country.addEventListener('click', ()=>{
     category = country.innerHTML;
-
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var drill=document.getElementsByClassName('selectGenre')[5];
 drill.addEventListener('click', ()=>{
     category = drill.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var gengetone=document.getElementsByClassName('selectGenre')[6];
 gengetone.addEventListener('click', ()=>{
     category = gengetone.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var gospel=document.getElementsByClassName('selectGenre')[7];
 gospel.addEventListener('click', ()=>{
     category = gospel.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var hiphop=document.getElementsByClassName('selectGenre')[8];
 hiphop.addEventListener('click', ()=>{
     category = hiphop.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var house=document.getElementsByClassName('selectGenre')[9];
 house.addEventListener('click', ()=>{
     category = house.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var pop=document.getElementsByClassName('selectGenre')[10];
 pop.addEventListener('click', ()=>{
     category = pop.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var reggea=document.getElementsByClassName('selectGenre')[11];
 reggea.addEventListener('click', ()=>{
     category = reggea.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var RnB=document.getElementsByClassName('selectGenre')[12];
 RnB.addEventListener('click', ()=>{
     category = RnB.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var soul=document.getElementsByClassName('selectGenre')[13];
 soul.addEventListener('click', ()=>{
     category = soul.innerHTML;
-
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
 var softRock=document.getElementsByClassName('selectGenre')[14];
 softRock.addEventListener('click', ()=>{
     category = softRock.innerHTML;
-    
+    chooseCategory ();
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover " + category;
 })
-
- 
-onAuthStateChanged(auth, async (user) => {
-    console.log(user.uid);
-    //reference Songs collection 
-    const colRef = query(collection(db, 'songs'), where("genre", "==", category));
-  
-    await getDocs(colRef)
+var all=document.getElementsByClassName('selectGenre')[15];
+all.addEventListener('click', ()=>{
+    const reset = document.getElementById('songList');
+    reset.innerHTML = '';
+    const songRef = collection(db, 'songs');
+    getDocs(songRef)
     .then((snapshot)=>{
       snapshot.docs.forEach((doc)=>{
         renderList(doc);
-  
-        songs.push({ ...doc.data(), 
-                     id: doc.id })
       })
-      console.log(songs)
-      const contButton =  document.getElementById("contButton");
-      if (songs.length == 0){
-        document.getElementById("songTitle").innerHTML = "Upload your own music";
-        document.getElementById("playBanner").innerHTML = "Upload";
-        document.getElementById("playBanner").classList.remove("hidden");
-        document.getElementById("uploadedMusic").innerHTML = "No Music uploaded yet";
-        document.getElementById("uploadedMusic").setAttribute("style", 'height:50vh');
-        document.getElementById("playBanner").addEventListener('click', ()=>{ 
-          window.location.href = "upload.html";
-        })
-      }
-      else {
-        document.getElementById("playBanner").innerHTML = "PLAY";
-        document.getElementById("playBanner").classList.remove("hidden");
-      
-      var random = Math.floor(Math.random() * songs.length);
-      let image = songs[random].ImageUrl;
-      let title = songs[random].songName;
-      let artist = songs[random].artist;
-      let music = songs[random].songURL;
-      //characters limited to 25
-      let str = songs[random].featured;
-      if (str.length > 40){
-        var featured = limit(str, 40) +"...";
-      } else{
-        featured = str;
-      }
-    
-      //Set top Banner
-      document.getElementById("songTitle").innerHTML = title;
-      if (str == ""){
-        document.getElementById("artistTitle").innerHTML = artist;
-      } else{
-        document.getElementById("artistTitle").innerHTML = artist + " ft. " + featured;
-      }
-      document.getElementById("coverArtBanner").src = image;
-    
-      //setup masterPlay
-      document.getElementById("masterPlayTitle").innerHTML = title;
-      document.getElementById("masterPlayArtist").innerHTML = artist;
-      document.getElementById("masterPlayArt").src = image;
-      document.getElementById("currentMusic").src = music;
-      }
     })
     .catch(err => {
       console.log(err)
     })
-  
-  })
+    genreOptions1.classList.add('hidden');
+    genreOptions2.classList.add('hidden');
+});
+
+//reference Songs collection 
+const chooseCategory = function(){
+    console.log(category);
+    const fetched =[];
+    const reset = document.getElementById('songList');
+    reset.innerHTML = '';
+    const songRef = query(collection(db, 'songs'), where("genre", "==", category));
+    console.log(songRef);
+
+    getDocs(songRef)
+    .then((snapshot)=>{
+      snapshot.docs.forEach((doc)=>{
+        renderList(doc);
+        fetched.push({ ...doc.data(), 
+            id: doc.id })
+      })
+      if (fetched.length == 0){
+        let li=document.createElement('li');
+        li.innerHTML = 'Category has no music yet';
+        songList.appendChild(li);
+    } 
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+
+//comment section
+const comments =document.getElementById('comments');
+const commentSection = document.getElementById('commentSection');
+const closeComments = document.getElementById('closeComments');
+comments.addEventListener('click', ()=>{
+  commentSection.classList.remove('hidden')
+});
+closeComments.addEventListener('click', ()=>{
+  commentSection.classList.add('hidden')
+});

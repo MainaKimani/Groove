@@ -7,7 +7,10 @@ import { getFirestore,
     getDocs,
     getDoc,
     query,
-    where
+    where,
+    updateDoc,
+    onSnapshot,
+    setDoc
 } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js";
 import { getAuth, 
   onAuthStateChanged
@@ -46,6 +49,22 @@ onAuthStateChanged(auth, async (user) => {
   console.log(user.uid);
   //reference Songs collection 
   const colRef = query(collection(db, 'songs'), where("user", "==", user.uid));
+  
+  const checkChanges = onSnapshot(colRef, (snapshot) =>{
+    snapshot.docChanges().forEach((change) => {
+      console.log(change)
+      if (change.type === "added") {
+        renderList(doc);
+      }
+      if (change.type === "modified") {
+        renderList(doc);
+      }
+      if (change.type === "removed") {
+        let li=songList.querySelector('[data-id =' + change.doc.id +']');
+         songList.removeChild(li);
+        }
+    })
+  })
 
   await getDocs(colRef)
   .then((snapshot)=>{
@@ -112,10 +131,10 @@ const songList = document.querySelector('#songList');
 
 //create element and render song list
 function renderList(docc){
-  
 
   let li=document.createElement('li');
   li.setAttribute('data-id', docc.id);
+  li.setAttribute('id', "listSong");
 
   const img = document.createElement('img');
   img.setAttribute('src',docc.data().ImageUrl);
@@ -123,7 +142,7 @@ function renderList(docc){
 
   const titleDiv = document.createElement('div');
   titleDiv.setAttribute('id','mysongTitle');
-  titleDiv.textContent=    docc.data().songName;
+  titleDiv.textContent = docc.data().songName;
 
   const artistDiv = document.createElement('div');
   artistDiv.setAttribute('id','myartistTitle');
@@ -156,6 +175,95 @@ function renderList(docc){
   li.appendChild(deleteIcon);
   li.appendChild(editIcon);
   songList.appendChild(li); 
+
+
+//Edit uploaded song
+editIcon.addEventListener("click", async (e) => {
+  console.log('Edit clicked');
+  e.stopPropagation();
+  let id = e.target.parentElement.getAttribute("data-id");
+  
+
+  //create the edit form
+  li.setAttribute('style', 'height:200px');
+  masterPlay.classList.add('hidden');
+  deleteIcon.classList.add('hidden');
+  editIcon.classList.add('hidden');
+
+  const editDiv =document.createElement("li");
+  editDiv.setAttribute("id",editDiv);
+
+  const leftDiv = document.createElement("div");
+  leftDiv.classList.add("leftDiv");
+  const label = document.createElement("label");
+  label.innerHTML = "Title: ";
+  const input = document.createElement("input");
+  input.setAttribute('id','editTitle');
+  input.setAttribute('type','text');
+  input.setAttribute('placeholder', docc.data().songName);
+
+
+  const label2 = document.createElement("label");
+  label2.innerHTML = "Artist: ";
+  const input2 = document.createElement("input");
+  input.setAttribute('id','editArtist');
+  input.setAttribute('type','text');
+  const label3 = document.createElement("label");
+  label3.innerHTML = "Featured: ";
+  const input3 = document.createElement("input");
+  input.setAttribute('id','editFeatured');
+  input.setAttribute('type','text');
+  input.setAttribute('value','');
+
+
+  const editSubmit = document.createElement('button');
+  editSubmit.setAttribute('id', 'editSubmit')
+  editSubmit.innerHTML = "EDIT";
+  const editCancel = document.createElement('button');
+  editCancel.setAttribute('id', 'editCancel');
+  editCancel.innerHTML = "CANCEL";
+
+  leftDiv.appendChild(label);
+  leftDiv.appendChild(input);
+  leftDiv.appendChild(label2);
+  leftDiv.appendChild(input2);
+  leftDiv.appendChild(label3);
+  leftDiv.appendChild(input3);
+  leftDiv.appendChild(editSubmit);
+  leftDiv.appendChild(editCancel);
+  editDiv.appendChild(leftDiv);
+  li.appendChild(editDiv);
+
+
+  editSubmit.addEventListener('click', async ()=>{
+    if (input != '' && input2 != ''){
+      const docRef = doc(db, 'songs', id);
+      await updateDoc (docRef,{
+        'songName': input.value,
+        'artist': input2.value,
+        'featured': input3.value
+    })
+  } 
+    input.value ='';
+    input2.value='';
+    input3.value='';
+    songs=[];
+    editDiv.classList.add('hidden');
+    li.setAttribute('style', 'height:80px');
+    masterPlay.classList.remove('hidden');
+    deleteIcon.classList.remove('hidden');
+    editIcon.classList.remove('hidden');
+    window.location.href = "my_music.html";
+  })
+
+  editCancel.addEventListener('click', ()=>{
+    editDiv.classList.add('hidden');
+    li.setAttribute('style', 'height:80px');
+    masterPlay.classList.remove('hidden');
+    deleteIcon.classList.remove('hidden');
+    editIcon.classList.remove('hidden');
+  })
+})
 
 //Delete uploaded song
 deleteIcon.addEventListener("click", async (e) => {
@@ -304,16 +412,3 @@ back.addEventListener('click', () =>{
    
   }
 })
-
-/*
-let left_scroll = document.getElementById('left_scroll');
-let right_scroll = document.getElementById('right_scroll');
-let pop_song = document.getElementsByClassName('pop_song')[0];
-
-left_scroll.addEventListener('click', () =>{
-  pop_song.scrollleft -= 330;
-})
-right_scroll.addEventListener('click', () =>{
-  pop_song.scrollleft += 330;
-})
-*/
