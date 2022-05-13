@@ -77,18 +77,18 @@
             <!-- top section (Music Info)-->
             <div class="content">
                 <div class="contentBanner">
-                    <h1 id="songTitle"> On My Way </h1>
-                    <p id="artistTitle"> Alan Walker </p>
+                    <h1 id="songTitle">  </h1>
+                    <p id="artistTitle"> </p>
                     <div class="buttons">
                         <button id='playBanner'>PLAY</button>
                     </div>
                 </div>
                 <div class="coverArt">
-                    <img src="images/1.jpg" alt="Cover Art" id="coverArtBanner" />
+                    <img src=" " alt="Cover Art" id="coverArtBanner" />
                 </div>
             </div>
             <div class="comment"> 
-                <p id="comments"> comments... </p>
+                <p id="comments" class="hidden"> comments... </p>
                 <div id="commentSection" class="hidden"> 
                      <div class="userInput">
                          <h4 class="user"> Maina Kimani</h4>
@@ -255,7 +255,7 @@
             </div>
 <div class="category">
     <ul>
-        <li id="discover" style="font-size:30px; font-weight:200">
+        <li id="discover" style="font-size:30px; font-weight:200; padding-bottom:40px">
             Discover Great Music
         </li>
         <ul> 
@@ -303,12 +303,12 @@
                 <div class="wave1"> </div>
             </div>
             <div class="image">
-                <img src="images/img.jpg" id ="masterPlayArt" />
+                <img src="" id ="masterPlayArt" />
             </div>
             
             <h5>
-                <span id="masterPlayTitle"> Smooth Criminal </span>
-                <div class="artist" id="masterPlayArtist"> Micheal Jackson </div>
+                <span id="masterPlayTitle"> </span>
+                <div class="artist" id="masterPlayArtist"> </div>
             </h5>
             
             <div class="icon">
@@ -328,7 +328,7 @@
             <span id="currentEnd">0:00</span>
 
             <div class="vol">
-                <i class="bi bi-volume-down"></i>
+                <i class="bi bi-volume-down" id="vol_icon"></i>
                 <input type="range" id="volume" min="0" value="30" max="100">
                 <div class="vol_bar"></div>
                 <div class="dot" id="vol_dot"></div>
@@ -337,6 +337,7 @@
         </div>
     <script type="module" src="logout.js"></script>
     <script type="module" src="play.js"></script>
+    <script type="module" src="bundle.js"></script>
     
 
 </body>

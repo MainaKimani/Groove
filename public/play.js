@@ -220,11 +220,16 @@ music.addEventListener('timeupdate', ()=>{
   let cuSec = Math.floor(curTime % 60);
   currentStart.innerText = `${curMin}:${cuSec}`;
 
-  let progressbar = parseInt((music.currentTime / music.duration)*100);
-  seek.value = progressbar;
-  let seekbar = seek.value;
-  bar2.style.width = `${seekbar}%`;
-  dot.style.left = `${seekbar}%`;
+
+  if (music.duration >= 0){
+    var progressbar = parseInt((music.currentTime/music.duration)*100);
+    seek.value = progressbar;
+    let seekbar = seek.value;
+    bar2.style.width = `${seekbar}%`;
+    dot.style.left = `${seekbar}%`;
+  } else {
+    var progressbar = 0;
+}
 })
 
 seek.addEventListener('change', ()=>{
@@ -439,6 +444,7 @@ all.addEventListener('click', ()=>{
     })
     genreOptions1.classList.add('hidden');
     genreOptions2.classList.add('hidden');
+    discover.innerHTML = "Discover Great Music";
 });
 
 //reference Songs collection 
