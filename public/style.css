@@ -47,27 +47,27 @@ header .menu_side, .song_side {
     z-index: 3;
 }
 header .menu_side h1{
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 15px 0 0 20px;
     font-weight: 500;
 }
 
 header .menu_side .playlist{
-    margin: 40px 0px 0px 20px;
+    margin: 2.5rem 0px 0px 1.25rem;
 }
 header .menu_side .playlist h3{
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 400;
-    padding-bottom: 10px;
+    padding-bottom: 0.6rem;
     color: #4c5262;
     display: flex;
     align-items: center;
     transition: .3s linear;
 }
 header .menu_side .playlist h4{
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 400;
-    padding-bottom: 10px;
+    padding-bottom: 0.6rem;
     color: #4c5262;
     cursor: pointer;
     display: flex;
@@ -79,20 +79,20 @@ header .menu_side .playlist h4:hover{
 }
 header .menu_side .playlist h4 span{
     position: relative;
-    margin-right: 35px;
+    margin-right: 2rem;
 }
 header .menu_side .playlist h4 span::before{
     content: "";
     position: absolute;
-    width: 4px;
-    height: 4px;
-    border: 2px solid #4c5262;
+    width: 0.25rem;
+    height: 0.25rem;
+    border: 0.125rem solid #4c5262;
     border-radius:50%;
     top: -4px;
     transition: .3s linear;
 }
 header .menu_side .playlist h4:hover span::before{
-    border: 2px solid #fff;
+    border: 0.125rem solid #fff;
 }
 header .menu_side .playlist h4 .bi{
     display: none;
@@ -105,12 +105,12 @@ header .menu_side .playlist .active span{
 }
 header .menu_side .playlist .active .bi{
     display: flex;
-    margin-right: 20px;
+    margin-right: 1.25rem;
     color: #36e2ec;
 }
 
 header .menu_side .border hr{
-    margin: 40px 20px 0 10px;
+    margin: 2.5rem 1.25rem 0 0.6rem;
     border: 1px solid #4c5262;
 }
 header .menu_side .menu_song{
@@ -170,7 +170,7 @@ header .song_side::before{
     content: '';
     position: absolute;
     width: 100%;
-    height: 300px;
+    height: 18.75rem;
     /* background: url('images/bg.png'); */
     z-index: -1;
 }
@@ -281,7 +281,7 @@ header .song_side .content .contentBanner{
 }
 header .song_side .content h1{
     margin-top:40px;
-    font-size: 35px;
+    font-size: 2rem;
    font-weight: 500;
 }
 header .song_side .content p{
