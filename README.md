@@ -2,10 +2,10 @@
 
 
 Groove Hits is a music player web application project that is developed mainly using vanilla JavaScript and Firebase as the backend service.
-The project essentially allows users to upload music, listen to music. 
+The project essentially allows users to upload music and listen to music. 
 Users can listen and enjoy the music uploaded by other users regardless of their auth. status. However, One must be signed in to upload music.
 
-The website can be accessed via https://groove-hits.web.app
+The website can be accessed via https://groove-hits.web.app/play.html
 
 ## Language and Tools Used
 1. Editor (eg: Vscode)
