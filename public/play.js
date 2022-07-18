@@ -192,11 +192,13 @@ const playMusic = function(){
     masterPlay.classList.remove('bi-play-circle');
     masterPlay.classList.add('bi-pause-circle');
     wave.classList.add('active2');
+    document.getElementById("playBanner").innerHTML = "PAUSE";
   } else {
     music.pause();
     masterPlay.classList.add('bi-play-circle');
     masterPlay.classList.remove('bi-pause-circle');
     wave.classList.remove('active2');
+    document.getElementById("playBanner").innerHTML = "PLAY";
   }
 }
 
